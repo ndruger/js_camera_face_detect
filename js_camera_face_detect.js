@@ -8,8 +8,8 @@ function start(src){
 	video.addEventListener('play', function(){
 		var canvas = document.createElement('canvas');
 		var width = video.videoWidth;
-		canvas.width = width;
 		var height = video.videoHeight;
+		canvas.width = width;
 		canvas.height = height;
 		
 		function loop(){
@@ -24,15 +24,15 @@ function start(src){
 			}
 			var res = FaceDetector.detect(img);
 			if (res !== null) {
-				var cvs=document.createElement("canvas");
+				var cvs = document.createElement("canvas");
 				cvs.width = img.width;
 				cvs.height = img.height;
-				var tmp_ctx = cvs.getContext("2d");
-				tmp_ctx.drawImage(img, 0 ,0);
-				tmp_ctx.strokeStyle = 'red';
-				tmp_ctx.lineWidth = 3;
-				tmp_ctx.rect(res.x, res.y, res.w, res.w);
-				tmp_ctx.stroke();
+				var tmpCtx = cvs.getContext("2d");
+				tmpCtx.drawImage(img, 0 ,0);
+				tmpCtx.strokeStyle = 'red';
+				tmpCtx.lineWidth = 3;
+				tmpCtx.rect(res.x, res.y, res.w, res.w);
+				tmpCtx.stroke();
 				img.src = cvs.toDataURL();
 			}
 			setTimeout(loop, INTERVAL);
